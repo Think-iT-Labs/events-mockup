@@ -1,0 +1,43 @@
+<html>
+<head>
+    <title>Event public page</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css" media="screen,projection"/>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col s12 m12">
+                <div class="card-panel teal white-text">
+                    <h4>I might be an external page!</h4>
+                </div>
+            </div>
+            <p class="flow-text">
+                Nemo animi aut quis mollitia qui inventore. Suscipit id ea consectetur et odio fugiat expedita. Dicta sit eaque ipsa tempore dolores vel. Minima provident aperiam incidunt est ea eaque non. Consequatur aliquam officiis voluptatem cum.
+            </p>
+            <p class="flow-text">
+                Nemo animi aut quis mollitia qui inventore. Suscipit id ea consectetur et odio fugiat expedita. Dicta sit eaque ipsa tempore dolores vel. Minima provident aperiam incidunt est ea eaque non. Consequatur aliquam officiis voluptatem cum.
+            </p>
+        </div>
+        <div class="row center">
+            <a class="waves-effect waves-light btn large" href="JavaScript:newPopup('linkedin.html');">participate<i class="material-icons right">mood</i></a>
+        </div>
+        <div class="row">
+            <p class="flow-text">
+                Nemo animi aut quis mollitia qui inventore. Suscipit id ea consectetur et odio fugiat expedita. Dicta sit eaque ipsa tempore dolores vel. Minima provident aperiam incidunt est ea eaque non. Consequatur aliquam officiis voluptatem cum.
+            </p>
+        </div>
+    </div>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+    <script type="text/javascript">
+        function newPopup(url) {
+            popupWindow = window.open(
+                url,'popUpWindow','height=300,width=400,left=10,top=10,resizable=yes,scrollbars=yes,toolbar=yes,menubar=no,location=no,directories=no,status=yes');
+            var thankYou = function() { location.replace("thank-you.html") };
+            popupWindow.onload = function() { popupWindow.RunCallbackFunction = thankYou; };
+        }
+    </script>
+</body>
+</html>
