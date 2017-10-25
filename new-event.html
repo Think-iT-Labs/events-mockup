@@ -23,10 +23,10 @@
                 <div class="file-field input-field">
                     <div class="btn">
                         <span>CSV File: list of participants</span>
-                        <input type="file">
+                        <input id="csv" type="file">
                     </div>
                     <div class="file-path-wrapper">
-                        <input class="file-path validate" type="text">
+                        <input id="csv-validate" class="file-path validate" data-error="Error reading CSV file: Uploaded file must be a RFC4180-compliant CSV file" data-success="Well formated CSV file!" type="text">
                     </div>
                 </div>
             </div>
@@ -38,11 +38,12 @@
             </div>
         </div>
         <div class="row">
-            <a class="waves-effect waves-light btn right" href="generated-link.html">Get the invitation link<i class="material-icons right">send</i></a>
+          <a class="waves-effect waves-light btn right" href="generated-link.html">Get the invitation link<i class="material-icons right">send</i></a>
         </div>
     </div>
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+    <script type="text/javascript" src="https://fastcdn.org/Papa-Parse/4.1.2/papaparse.min.js"></script>
     <script>
         $('.datepicker').pickadate({
             selectMonths: true, // Creates a dropdown to control month
@@ -52,6 +53,27 @@
             close: 'Ok',
             closeOnSelect: false // Close upon selecting a date,
         });
-    </script>
+        $('#csv').change(function(event) { 
+          var filelist = $('#csv').prop('files');
+          var file = filelist[0];
+
+          if (file.type !== 'text/csv') {
+            alert('Uploaded file must be a RFC4180-compliant CSV file');
+            return false;
+          }
+
+          var fileReader = new FileReader();
+          fileReader.onload = function (e) {
+              console.log(Papa.parse(fileReader.result,));
+          };
+          fileReader.onerror = function (e) {
+              throw 'Error reading CSV file';
+          };
+
+          fileReader.readAsText(file);
+
+          return true;
+      });
+</script>
 </body>
 </html>
